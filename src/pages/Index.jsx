@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 const Index = () => {
@@ -8,7 +9,17 @@ const Index = () => {
       <p className="text-lg text-center">
         This is a bare-bones application. Start building your amazing app here!
       </p>
-      <Button variant="outline">Get Started</Button>
+      <div className="space-x-4">
+        <Link to="/profile">
+          <Button variant="outline">Profile</Button>
+        </Link>
+        <Link to="/friends">
+          <Button variant="outline">Friends</Button>
+        </Link>
+        <Link to="/newsfeed">
+          <Button variant="outline">News Feed</Button>
+        </Link>
+      </div>
     </div>
   );
 };
