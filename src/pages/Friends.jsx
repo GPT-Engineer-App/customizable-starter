@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 
 const Friends = () => {
   const [friends, setFriends] = useState([]);
@@ -15,27 +17,34 @@ const Friends = () => {
   };
 
   return (
-    <div className="h-screen w-screen flex flex-col items-center justify-center space-y-4">
-      <h1 className="text-4xl font-bold">Friends</h1>
-      <div className="space-y-4">
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Add a friend"
-        />
-        <Button onClick={addFriend}>Add Friend</Button>
-      </div>
-      <ul className="space-y-2">
-        {friends.map((friend, index) => (
-          <li key={index} className="flex justify-between items-center">
-            {friend}
-            <Button variant="outline" onClick={() => removeFriend(friend)}>
-              Remove
-            </Button>
-          </li>
-        ))}
-      </ul>
+    <div className="h-screen w-screen flex flex-col items-center justify-center space-y-4 bg-gray-50 p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader>
+          <CardTitle className="text-center text-2xl font-bold">Friends</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="flex items-center space-x-2">
+            <Input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Add a friend"
+              className="flex-1"
+            />
+            <Button onClick={addFriend}>Add Friend</Button>
+          </div>
+          <ul className="space-y-2">
+            {friends.map((friend, index) => (
+              <li key={index} className="flex justify-between items-center border p-4 rounded bg-white shadow-sm">
+                {friend}
+                <Button variant="outline" onClick={() => removeFriend(friend)}>
+                  Remove
+                </Button>
+              </li>
+            ))}
+          </ul>
+        </CardContent>
+      </Card>
     </div>
   );
 };
